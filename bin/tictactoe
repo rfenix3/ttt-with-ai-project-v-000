@@ -5,13 +5,12 @@ require_relative '../config/environment'
 class TicTacToeCLI
 
   def call
-    board = Board.new
-
     puts "======================="
     puts "Welcome to Tic Tac Toe!"
     puts "======================="
+    game = Game.new
 
-    board.display
+    game.board.display
     
     puts ""
     puts "======================="
@@ -34,7 +33,9 @@ class TicTacToeCLI
       puts "Enter between 0-2"
     end
       
-    game.play
+    until game.won?
+      game.play
+    end
 
   end
 
